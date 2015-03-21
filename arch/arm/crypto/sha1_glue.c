@@ -25,8 +25,10 @@
 #include <asm/byteorder.h>
 #include <asm/crypto/sha1.h>
 
+
 asmlinkage void sha1_block_data_order(u32 *digest,
 		const unsigned char *data, unsigned int rounds);
+
 
 static int sha1_init(struct shash_desc *desc)
 {
@@ -63,6 +65,7 @@ static int __sha1_update(struct sha1_state *sctx, const u8 *data,
 	return 0;
 }
 
+
 int sha1_update_arm(struct shash_desc *desc, const u8 *data,
 		    unsigned int len)
 {
@@ -78,8 +81,9 @@ int sha1_update_arm(struct shash_desc *desc, const u8 *data,
 	}
 	res = __sha1_update(sctx, data, len, partial);
 	return res;
-
+}
 EXPORT_SYMBOL_GPL(sha1_update_arm);
+
 
 /* Add padding and return the message digest. */
 static int sha1_final(struct shash_desc *desc, u8 *out)
